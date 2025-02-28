@@ -49,7 +49,7 @@ const Navbar = () => {
         {/* Navigation Menu */}
         <nav ref={menuRef} className={isMenuOpen ? "open" : ""} aria-expanded={isMenuOpen}>
           <Link to="/">Home</Link>
-          <Link to="/bike-search">Bike Search</Link>
+          <Link to="/bike-search">Search Bikes</Link>
           <Link to="/become-owner">Become a Bike Owner</Link>
           <Link to="/support">Support</Link>
           <Link to="/login" className="cta-btn">Login</Link>
