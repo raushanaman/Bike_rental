@@ -2,17 +2,14 @@
   min-height: 100vh;
   width: 100vw;
   background-image: url('https://www.pixel4k.com/wp-content/uploads/2019/06/biker-rider-chilling-on-mountain-side-5k_1560535678.jpg');
-  
-  
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 80px; /* Adjust based on your navbar height */
+  box-sizing: border-box;
 }
-
-
-
 
 .auth-container {
   background: rgba(255, 255, 255, 0.1);
@@ -22,10 +19,11 @@
   width: 80%;
   max-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-top: auto; /* Keeps it centered better with padding */
+  margin-bottom: auto; /* Ensures equal spacing from bottom */
 }
 
 .button-container {
@@ -85,7 +83,6 @@ h2 {
 
 .input-group {
   margin-bottom: 15px;
-
 }
 
 .input-group label {
