@@ -13,7 +13,6 @@ html, body {
 /* Navbar Styles */
 header {
   background-color: #007bff;
-  padding: 10px 0;
   color: white;
   text-align: center;
   width: 100%;
@@ -21,15 +20,15 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
+  transition: all 0.3s ease-in-out;
 }
 
+/* Container */
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  max-width: 100%;
-  width: 100%;
+  padding: 10px 20px;
 }
 
 /* Site Title */
@@ -53,6 +52,7 @@ header nav a {
   font-size: 14px;
   text-decoration: none;
   padding: 8px;
+}
 }
 
 header .cta-btn {
