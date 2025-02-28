@@ -1,0 +1,85 @@
+/* Features Section */
+.features {
+  padding: 60px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #6c757d;
+  margin-bottom: 40px;
+}
+
+/* Flex Layout */
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Feature Box */
+.feature-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(25% - 20px); /* Default to 4 cards per row */
+  box-sizing: border-box;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.feature-box i {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.feature-box h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Hover Effect */
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 1366px) {
+  .feature-box {
+    flex: 1 1 calc(33.33% - 20px); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .feature-box {
+    flex: 1 1 calc(50% - 20px); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-box {
+    flex: 1 1 calc(100% - 20px); /* 1 card per row */
+  }
+}

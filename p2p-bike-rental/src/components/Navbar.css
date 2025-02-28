@@ -1,0 +1,127 @@
+/* Global Fix for Horizontal Scroll Issue */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Navbar Styles */
+header {
+  background-color: #007bff;
+  padding: 10px 0;
+  color: white;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Site Title */
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+/* Navigation Menu */
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+header nav a {
+  color: white;
+  margin: 0 10px;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 8px;
+}
+
+header .cta-btn {
+  background-color: #ff6600;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile Navbar Toggle Button */
+.navbar-toggle {
+  display: none;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 22px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 1080px) {
+  .navbar-toggle {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 123, 255, 0.95);
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Fix: Show menu when `.open` class is added */
+  header nav.open {
+    display: flex !important;
+    width: 100%;
+  }
+
+  header nav a {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 20px;
+  }
+
+  header nav a {
+    font-size: 12px;
+    margin: 0 5px;
+  }
+
+  header .cta-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
