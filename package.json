@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/raushanaman/Bike_rental#readme",
   "dependencies": {
+    "chalk": "^5.4.1",
     "concurrently": "^9.1.2"
   }
 }
