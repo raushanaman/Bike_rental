@@ -68,6 +68,31 @@
   box-sizing: border-box;
 }
 
+.login-box h2 {
+  color: rgb(255, 255, 255);
+
+}
+
+
+
+.signup-box h2 {
+  color: rgb(255, 255, 255);
+
+}
+
+.signup-box .input-group label{
+  color: rgb(222, 222, 230);
+
+}
+
+
+.login-box .input-group label{
+  color: rgb(222, 222, 230);
+
+}
+
+
+
 .slide-login {
   transform: translateX(0%);
 }
