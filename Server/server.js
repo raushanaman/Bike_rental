@@ -1,4 +1,3 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,15 +5,17 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 // Initialize app and middleware
 const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Allow all origins, change in production to restrict it
 
+// Debugging: Check if MONGO_URI is loaded
+console.log(process.env.MONGO_URI);
+
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
