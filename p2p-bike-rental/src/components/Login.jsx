@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [loginData, setLoginData] = useState({ username: '', password: '' });
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [signupData, setSignupData] = useState({ username: '', email: '', password: '' });
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -16,16 +21,31 @@ const Login = () => {
     setSignupData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login Data:', loginData);
-    // Add login logic here
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', loginData);
+      console.log(response.data);
+      localStorage.setItem('authToken', response.data.token);
+      setMessage('Login successful');
+      navigate('/');  // Redirect to Home page
+    } catch (err) {
+      setError(err.response?.data?.message || 'Invalid credentials');
+    }
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    console.log('Signup Data:', signupData);
-    // Add signup logic here
+    try {
+      const response = await axios.post('http://localhost:5000/api/signup', signupData);
+      console.log(response.data);
+      setMessage(response.data.message); // Show success message
+      setError('');
+      setSignupData({ username: '', email: '', password: '' }); // Clear the form
+    } catch (err) {
+      setError(err.response?.data?.message || 'Error signing up');
+      setMessage('');
+    }
   };
 
   return (
@@ -33,14 +53,14 @@ const Login = () => {
       <div className="auth-container">
         {/* Tab Buttons */}
         <div className="button-container">
-          <button 
-            className={`tab-button ${isLogin ? 'active' : ''}`} 
+          <button
+            className={`tab-button ${isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(true)}
           >
             Login
           </button>
-          <button 
-            className={`tab-button ${!isLogin ? 'active' : ''}`} 
+          <button
+            className={`tab-button ${!isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(false)}
           >
             Sign Up
@@ -54,14 +74,14 @@ const Login = () => {
             <h2>Login</h2>
             <form onSubmit={handleLoginSubmit}>
               <div className="input-group">
-                <label htmlFor="login-username">Username</label>
+                <label htmlFor="login-email">Email</label>
                 <input
-                  type="text"
-                  id="login-username"
-                  name="username"
-                  value={loginData.username}
+                  type="email"
+                  id="login-email"
+                  name="email"
+                  value={loginData.email}
                   onChange={handleLoginChange}
-                  placeholder="Enter your username"
+                  placeholder="Enter your email"
                 />
               </div>
               <div className="input-group">
@@ -75,6 +95,8 @@ const Login = () => {
                   placeholder="Enter your password"
                 />
               </div>
+              {message && <div className="success-message">{message}</div>}
+              {error && <div className="error-message">{error}</div>}
               <button type="submit" className="submit-button">Log In</button>
             </form>
           </div>
@@ -95,10 +117,10 @@ const Login = () => {
                 />
               </div>
               <div className="input-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="signup-email">Email</label>
                 <input
                   type="email"
-                  id="email"
+                  id="signup-email"
                   name="email"
                   value={signupData.email}
                   onChange={handleSignupChange}
@@ -116,19 +138,8 @@ const Login = () => {
                   placeholder="Create a password"
                 />
               </div>
-              <div className="input-group">
-                <label htmlFor="confirm-signup-password">Confirm Password</label>
-                <input
-                  type="password"
-                  id="confirm-signup-password"
-                  name="password"
-                  value={signupData.password}
-                  onChange={handleSignupChange}
-                  placeholder="Confirm password"
-                />
-              </div>
-
-
+              {message && <div className="success-message">{message}</div>}
+              {error && <div className="error-message">{error}</div>}
               <button type="submit" className="submit-button">Sign Up</button>
             </form>
           </div>
