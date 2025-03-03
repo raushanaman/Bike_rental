@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
       console.log('Access your user interface at http://localhost:5173/');
+
     });
   })
   .catch((err) => console.log('Error connecting to MongoDB:', err));
